@@ -1,0 +1,38 @@
+[
+  {
+    "id": 12,
+    "vardas": "Kestas",
+    "pavarde": "Kestaitis",
+    "alga": 20001
+  },
+  {
+    "id": 13,
+    "vardas": "Vytis",
+    "pavarde": "Vytautas",
+    "alga": 2000
+  },
+  {
+    "id": 14,
+    "vardas": "Petras",
+    "pavarde": "Petriukass",
+    "alga": 1002
+  },
+  {
+    "id": 15,
+    "vardas": "Andrius",
+    "pavarde": "Andriukas",
+    "alga": 3002
+  },
+  {
+    "id": 19,
+    "vardas": "TOMAS",
+    "pavarde": "Tomylinas",
+    "alga": 1
+  },
+  {
+    "id": 20,
+    "vardas": "Geras",
+    "pavarde": "Zmogus",
+    "alga": 100000000
+  }
+]
