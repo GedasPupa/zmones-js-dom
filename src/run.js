@@ -84,5 +84,52 @@ app.post('/json/zmogus', async (req, res) => {
     }
 });
 
+app.delete('/json/zmogus/:id', async (req, res) => {
+    try {
+        let zmones = await readFile(DATA_FILE, {
+            encoding: 'utf-8'
+        });
+        zmones = JSON.parse(zmones);
+
+        const id = parseInt(req.params.id);
+        const filtered = zmones.filter(zm => zm.id !== id);
+
+        await writeFile(DATA_FILE, JSON.stringify(filtered, null, 2), {
+            encoding: 'utf-8'
+        });
+        res.status(200).end();
+
+    } catch (err) {
+        res.status(500).end(`<html><body><h1>Ivyko klaida: ${err.message}</h1></body></html>`);
+    }
+});
+
+app.put('/json/zmogus/:id', async (req, res) => {
+    try {
+        let zmones = await readFile(DATA_FILE, {
+            encoding: 'utf-8'
+        });
+        zmones = JSON.parse(zmones);
+
+        const id = parseInt(req.params.id);
+        const index = zmones.findIndex(z => z.id === id);
+        let naujasZm = {
+            id: id,
+            vardas: req.body.vardas,
+            pavarde: req.body.pavarde,
+            alga: parseFloat(req.body.alga)
+        }
+        zmones[index] = naujasZm;
+
+        await writeFile(DATA_FILE, JSON.stringify(zmones, null, 2), {
+            encoding: 'utf-8'
+        });
+        res.status(200).end();
+
+    } catch (err) {
+        res.status(500).end(`<html><body><h1>Ivyko klaida: ${err.message}</h1></body></html>`);
+    }
+});
+
 app.listen(SERVER_PORT);
 console.log(`Server started on port: ${SERVER_PORT}`);
